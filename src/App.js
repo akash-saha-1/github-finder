@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        <Navbar tite="Navbar Finder" />
         <UserItem />
       </div>
     );
