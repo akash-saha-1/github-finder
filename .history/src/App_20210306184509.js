@@ -17,8 +17,6 @@ class App extends Component {
     repos: [],
     loading: false,
     alert: null,
-    githubClientId: "",
-    githubClientSecret: "",
   };
   // async componentDidMount() {
   //   this.setState({ loading: true });
@@ -27,37 +25,20 @@ class App extends Component {
   //   );
   //   this.setState({ users: res.data, loading: false });
   // }
-  async componentDidMount() {
-    if (process.env.NODE_ENV !== "production") {
-      this.setState({ githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID });
-      this.setState({
-        githubClientSecret: process.env.REACT_APP_GITHUB_CLIENT_SECRET,
-      });
-    } else {
-      this.setState({ githubClientId: process.env.REACT_APP_GITHUB_CLIENT_ID });
-      this.setState({
-        githubClientSecret: process.env.REACT_APP_GITHUB_CLIENT_SECRET,
-      });
-      //githubClientId=process.env.GITHUB_CLIENT_ID;
-      //for service provided config variables in environments like netifly/heroku
-      //githubClientSecret=process.env.GITHUB_CLIENT_SECRET;
-    }
-  }
-
   searchUsers = async (text) => {
     this.setState({ loading: true });
-    const { githubClientId, githubClientSecret } = this.state;
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
     this.setState({ users: res.data.items, loading: false });
   };
   //get details of single user
   getUser = async (username) => {
     this.setState({ loading: true });
-    const { githubClientId, githubClientSecret } = this.state;
     const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${githubClientId}&client_secret=${githubClientSecret}`
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
     this.setState({ user: res.data, loading: false });
   };
@@ -65,10 +46,9 @@ class App extends Component {
   //get user all repositories
   getUserRepo = async (username) => {
     this.setState({ loading: true });
-    const { githubClientId, githubClientSecret } = this.state;
     const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${githubClientId}
-      &client_secret=${githubClientSecret}`
+      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}
+      &client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
     this.setState({ repos: res.data, loading: false });
   };
