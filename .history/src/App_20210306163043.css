@@ -429,6 +429,6 @@ table th {
 
 @media(max-width:768px) {
   .user-list {
-    display: block !important;
+    display: block;
   }
 }
