@@ -20,10 +20,10 @@ const Navbar = ({ icon, title }) => {
         </h1>
         <ul>
           <li>
-            <Link to="/github-finder/">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/github-finder/about">About</Link>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </nav>

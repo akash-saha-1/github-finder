@@ -39,7 +39,7 @@ export class User extends Component {
     if (loading) return <Spinner />;
     return (
       <Fragment>
-        <Link to="/github-finder/" className="btn btn-light">
+        <Link to="/" className="btn btn-light">
           Back to Search
         </Link>
         Hireable:{" "}

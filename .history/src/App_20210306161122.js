@@ -71,8 +71,7 @@ class App extends Component {
             <Alert alert={this.state.alert} />
             <Switch>
               <Route
-                path="/github-finder/"
-                exact
+                path="/"
                 render={(props) => (
                   <Fragment>
                     <Search
@@ -85,10 +84,10 @@ class App extends Component {
                   </Fragment>
                 )}
               />
-              <Route exact path="/github-finder/about" component={About} />
+              <Route exact path="/about" component={About} />
               <Route
                 exact
-                path="/github-finder/user/:username"
+                path="/user/:username"
                 render={(props) => (
                   <User
                     {...props}
