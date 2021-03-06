@@ -72,7 +72,6 @@ class App extends Component {
             <Switch>
               <Route
                 path="/"
-                exact
                 render={(props) => (
                   <Fragment>
                     <Search
